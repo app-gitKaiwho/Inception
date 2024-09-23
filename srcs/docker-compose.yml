@@ -2,10 +2,18 @@ volumes:
   wordpress:
     name: wordpress
     driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/lvon-war/data/wordpress
 
   mariadb:
     name: mariadb
     driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/lvon-war/data/mariadb
 
 networks:
   inception:
