@@ -1,16 +1,16 @@
 container_file = ./srcs/docker-compose.yml
 
 up:
-	@docker-compose -f $(container_file) up -d --build
+	@docker compose -f $(container_file) up -d --build
 
 down:
-	@docker-compose -f $(container_file) down
+	@docker compose -f $(container_file) down
 
 stop:
-	@docker-compose -f $(container_file) stop
+	@docker compose -f $(container_file) stop
 
 clean:
-	@docker-compose -f $(container_file) down -v
+	@docker compose -f $(container_file) down -v
 	@docker system prune -f
 
 fclean: clean
