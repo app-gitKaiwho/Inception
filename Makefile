@@ -1,6 +1,11 @@
 container_file = ./srcs/docker-compose.yml
+container_volume = /home/lvon-war/data
 
-up:
+prep:
+	@mkdir -p $(container_volume)/wordpress
+	@mkdir -p $(container_volume)/mariadb
+
+up: prep
 	@docker compose -f $(container_file) up -d --build
 
 down:
@@ -12,6 +17,7 @@ stop:
 clean:
 	@docker compose -f $(container_file) down -v
 	@docker system prune -f
+	@rm -rf $(container_volume)
 
 fclean: clean
 
